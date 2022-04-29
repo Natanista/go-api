@@ -4,9 +4,9 @@ services:
   db:
     build:
       context: .
-      dockerfile: .dockerfile
+      dockerfile: .Dockerfile
     image: github.com/natanista/go-api
-    container_name: go-api-db
+    container_name: go-api
     restart: unless-stopped
     tty: true
     ports:
