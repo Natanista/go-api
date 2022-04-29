@@ -1,1 +1,1 @@
-web: github.com/natanista/go-api
+web:github.com/natanista/go-api
