@@ -14,18 +14,18 @@ import (
 var db *gorm.DB
 
 func StartDB() {
-	url := os.Getenv("DATABASE_URL")
-	// host := os.Getenv("DATABASE_HOST")
+	// url := os.Getenv("DATABASE_URL")
+	host := os.Getenv("DATABASE_HOST")
 	// dialect := os.Getenv("DATABASE_DIALECT")
-	// port := os.Getenv("DATABASE_PORT")
-	// user := os.Getenv("DATABASE_USER")
-	// dbname := os.Getenv("DATABASE_DBNAME")
-	// password := os.Getenv("DATABASE_PASSWORD")
+	port := os.Getenv("DATABASE_PORT")
+	user := os.Getenv("DATABASE_USER")
+	dbname := os.Getenv("DATABASE_DBNAME")
+	password := os.Getenv("DATABASE_PASSWORD")
 
-	// str := fmt.Sprintf("host=%s port=%s user=%s dbname=%s sslmode=disable password=%s", host, port, user, dbname, password)
+	str := fmt.Sprintf("host=%s port=%s user=%s dbname=%s sslmode=disable password=%s", host, port, user, dbname, password)
 
 	
-	database, err := gorm.Open(postgres.Open(url), &gorm.Config{})
+	database, err := gorm.Open(postgres.Open(str), &gorm.Config{})
 
 	if err != nil {
 		fmt.Println("Could not connect to the Postgres Database")
