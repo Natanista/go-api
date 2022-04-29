@@ -3,6 +3,8 @@ package database
 import (
 	"fmt"
 	"log"
+	"os"
+
 	// "os"
 	"time"
 
@@ -26,7 +28,7 @@ func StartDB() {
 	// str := fmt.Sprintf("host=%s port=%s user=%s dbname=%s sslmode=disable password=%s", host, port, user, dbname, password)
 
 	
-	database, err := gorm.Open(postgres.Open("postgres://vtvsbfqobfssqw:edee9aa648b04a7940144994afe1925a1c83fdcf876689394759e272f4207fe5@ec2-34-194-73-236.compute-1.amazonaws.com:5432/d2n1bq3i9rb6vt"), &gorm.Config{})
+	database, err := gorm.Open(postgres.Open(os.Getenv("DATABASE_URL")), &gorm.Config{})
 
 	if err != nil {
 		fmt.Println("Could not connect to the Postgres Database")
