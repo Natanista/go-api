@@ -3,7 +3,7 @@ package database
 import (
 	"fmt"
 	"log"
-	"os"
+	// "os"
 
 	// "os"
 	"time"
@@ -29,11 +29,11 @@ func StartDB() {
 	// str := fmt.Sprintf("host=%s port=%s user=%s dbname=%s sslmode=disable password=%s", host, port, user, dbname, password)
 
 	//docker postgres db
-		// str := fmt.Sprintf("host=%s port=%s user=%s dbname=%s sslmode=disable password=%s", host, port, user, dbname, password)
+		str := "host=localhost port=25431 user=admin dbname=books sslmode=disable password=123456"
 
 
 	
-	database, err := gorm.Open(postgres.Open(os.Getenv("DATABASE_URL")), &gorm.Config{})
+	database, err := gorm.Open(postgres.Open(str), &gorm.Config{})
 
 	if err != nil {
 		fmt.Println("Could not connect to the Postgres Database")

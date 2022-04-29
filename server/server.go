@@ -2,7 +2,6 @@ package server
 
 import (
 	"log"
-	"os"
 
 	"github.com/gin-gonic/gin"
 	"github.com/natanista/go-api/server/routes"
@@ -15,7 +14,7 @@ type Server struct {
 
 func NewServer() Server {
 	return Server {
-		port: os.Getenv("PORT"),
+		port:"5000",
 		server: gin.Default(),
 	}
 }

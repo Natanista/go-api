@@ -4,20 +4,20 @@ services:
   db:
     build:
       context: .
-      dockerfile: .dockerfile
+      dockerfile: .Dockerfile
     image: github.com/natanista/go-api
     container_name: natan-bookstore
     restart: unless-stopped
     tty: true
     ports:
-      - "25432:5432"
+      - "25431:5432"
     environment:
       POSTGRES_DB: books
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: 123456
-      PGDATA: /var/lib/postgresql/data/webapi-mvc
+      PGDATA: /var/lib/postgresql/data/go-api
     volumes:
-      - webapi-mvc:/var/lib/postgresql/data
+      - go-api:/var/lib/postgresql/data
 
 volumes:
-  webapi-mvc:
+  go-api:
