@@ -3,7 +3,7 @@ package database
 import (
 	"fmt"
 	"log"
-	// "os"
+	"os"
 	"time"
 
 	"github.com/natanista/go-api/database/migrations"
@@ -14,6 +14,7 @@ import (
 var db *gorm.DB
 
 func StartDB() {
+	url := os.Getenv("DATABASE_URL")
 	// host := os.Getenv("DATABASE_HOST")
 	// dialect := os.Getenv("DATABASE_DIALECT")
 	// port := os.Getenv("DATABASE_PORT")
@@ -24,7 +25,7 @@ func StartDB() {
 	// str := fmt.Sprintf("host=%s port=%s user=%s dbname=%s sslmode=disable password=%s", host, port, user, dbname, password)
 
 	
-	database, err := gorm.Open(postgres.Open("postgres://vtvsbfqobfssqw:edee9aa648b04a7940144994afe1925a1c83fdcf876689394759e272f4207fe5@ec2-34-194-73-236.compute-1.amazonaws.com:5432/d2n1bq3i9rb6vt"), &gorm.Config{})
+	database, err := gorm.Open(postgres.Open(url), &gorm.Config{})
 
 	if err != nil {
 		fmt.Println("Could not connect to the Postgres Database")
