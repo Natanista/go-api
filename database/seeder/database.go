@@ -3,6 +3,7 @@ package database
 import (
 	"fmt"
 	"log"
+	"os"
 	"time"
 
 	"github.com/natanista/go-api/database/migrations"
@@ -13,8 +14,15 @@ import (
 var db *gorm.DB
 
 func StartDB() {
-	str := "host=localhost port=25431 user=admin dbname=books sslmode=disable password=123456"
+	host := os.Getenv("DATABASE_HOST")
+	port := os.Getenv("DATABASE_PORT")
+	user := os.Getenv("DATABASE_USER")
+	dbname := os.Getenv("DATABASE_DBNAME")
+	password := os.Getenv("DATABASE_PASSWORD")
 
+	str := fmt.Sprintf("host=%s port=%s user=%s dbname=%s sslmode=disable password=%s", host, port, user, dbname, password)
+
+	
 	database, err := gorm.Open(postgres.Open(str), &gorm.Config{})
 
 	if err != nil {
