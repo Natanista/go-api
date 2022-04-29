@@ -24,8 +24,13 @@ func StartDB() {
 	// user := os.Getenv("DATABASE_USER")
 	// dbname := os.Getenv("DATABASE_DBNAME")
 	// password := os.Getenv("DATABASE_PASSWORD")
-
+	
+	//create url 
 	// str := fmt.Sprintf("host=%s port=%s user=%s dbname=%s sslmode=disable password=%s", host, port, user, dbname, password)
+
+	//docker postgres db
+		// str := fmt.Sprintf("host=%s port=%s user=%s dbname=%s sslmode=disable password=%s", host, port, user, dbname, password)
+
 
 	
 	database, err := gorm.Open(postgres.Open(os.Getenv("DATABASE_URL")), &gorm.Config{})
