@@ -3,6 +3,8 @@ package database
 import (
 	"fmt"
 	"log"
+	"os"
+
 	// "os"
 
 	// "os"
@@ -18,18 +20,17 @@ var db *gorm.DB
 func StartDB() {
 	// uri := os.Getenv("DATABASE_URL")
 
-	// host := os.Getenv("DATABASE_HOST")
-	// dialect := os.Getenv("DATABASE_DIALECT")
-	// port := os.Getenv("DATABASE_PORT")
-	// user := os.Getenv("DATABASE_USER")
-	// dbname := os.Getenv("DATABASE_DBNAME")
-	// password := os.Getenv("DATABASE_PASSWORD")
+	host := os.Getenv("DB_HOST")
+	port := os.Getenv("DB_PORT")
+	user := os.Getenv("DB_USER")
+	dbname := os.Getenv("DB_DBNAME")
+	password := os.Getenv("DB_PASSWORD")
 	
 	//create url 
-	// str := fmt.Sprintf("host=%s port=%s user=%s dbname=%s sslmode=disable password=%s", host, port, user, dbname, password)
+	str := fmt.Sprintf("host=%s port=%s user=%s dbname=%s sslmode=disable password=%s", host, port, user, dbname, password)
 
 	//docker postgres db
-		str := "host=localhost port=25431 user=admin dbname=books sslmode=disable password=123456"
+		// str := "host=localhost port=25431 user=admin dbname=books sslmode=disable password=123456"
 
 
 	

@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: .Dockerfile
-    image: github.com/natanista/go-api
+    image: go-api database
     container_name: natan-bookstore
     restart: unless-stopped
     tty: true

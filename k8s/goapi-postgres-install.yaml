@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: goapi-postgres
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: goapi-postgres
+  template:
+    metadata:
+      labels:
+        app: goapi-postgres
+    spec:
+      containers:
+        - name: goapi-postgres
+          image: natanista/natanista-hub:goapi-postgres-db
+          resources:
+            limits:
+              memory: "2Gi"
+              cpu: "1000m"
+          ports:
+            - containerPort: 5432
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: goapi-postgres
+spec:
+  selector:
+    app: goapi-postgres
+  ports:
+    - protocol: TCP
+      port: 5432
+      targetPort: 5432
+
